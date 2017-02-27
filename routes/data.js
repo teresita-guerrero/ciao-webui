@@ -8,6 +8,7 @@ var NodeService = require('../core/nodeService');
 var TenantService = require('../core/tenantService');
 var BlockService = require('../core/blockService');
 var ImageService = require('../core/imageService');
+var ExternalIPService = require('../core/externalIPService')
 
 // Set up
 var adapter = new ciaoAdapter();
@@ -21,6 +22,9 @@ var blockService = new BlockService(adapter.useNode('storage'),
                                     tokenManager);
 // ToDo: temporally using controller config until image config is added
 var imageService = new ImageService(adapter.useNode('controller'),
+                                    tokenManager);
+
+var externalIPService = new ExternalIPService(adapter.useNode('controller'),
                                     tokenManager);
 
 // Validate session as an authorized token is required
@@ -38,6 +42,14 @@ router.delete('/:tenant/servers/:server', function (req, res, next) {
         })
         .validate(req, res);
 });
+
+/* Endpoints for External IP Service */
+// External IP Service GET Methods
+router.get('/:tenant/pools', externalIPService.listPools());
+router.get('/:tenant/pools/:name')
+
+// External IP Service POST Methods
+router.get('/:tenant/pools/',externalIPService.createPool());
 
 /* Endpoints for Image Service */
 // Image service GET Methods
