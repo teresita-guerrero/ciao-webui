@@ -3,6 +3,8 @@
 */
 
 var externalIPService = function (adapter, tokenManager) {
+    this.adapter = adapter;
+    this.tokenManager = tokenManager;
 };
 
 // listMappedIPs
@@ -12,7 +14,7 @@ externalIPService.prototype.listPools = function () {
     var tokenManager = this.tokenManager;
     return function (req, res, next) {
         var uri = "v2/pools";
-        console.log("helouuuu", req);
+        console.log("helouuuu", res);
         return adapter.onSuccess((data) => res.send(data.json))
             .onError((data) => res.send(data))
             .get(uri,req.session.token);
