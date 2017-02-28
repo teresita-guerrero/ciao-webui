@@ -30,8 +30,8 @@ externalIPService.prototype.createPool = function () {
     var adapter = this.adapter;
     var tokenManager = this.tokenManager;
     return function (req, res, next) {
-        console.log("hola", req);
-        var uri = "/v2/"+req.params.tenant+"/pools";
+        console.log("hola", req.body);
+        var uri = "/v2/pools";
 
         var pool = req.body.pool? req.body :{
             name:req.body.name,
