@@ -15,7 +15,7 @@ externalIPService.prototype.listPools = function () {
     return function (req, res, next) {
         var uri = "v2/pools";
         return adapter.onSuccess((data) => {
-            res.set('Content-Type','application/json');
+            res.set('Content-Type','application/x.ciao.v1.pools');
             console.log("los datos son", data.json);
             res.send(data.json);
         }).onError((data) => res.send(data))
