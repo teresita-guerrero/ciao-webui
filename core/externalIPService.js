@@ -13,9 +13,11 @@ externalIPService.prototype.listPools = function () {
     var adapter = this.adapter;
     var tokenManager = this.tokenManager;
     return function (req, res, next) {
-        var uri = "pools";
-        return adapter.onSuccess((data) => res.send(data.json))
-            .onError((data) => res.send(data))
+        var uri = "v2.1/pools";
+        return adapter.onSuccess((data) => {
+            res.set('Content-Type','x.ciao.pools.v1');
+            res.send(data.json);
+        }).onError((data) => res.send(data))
             .get(uri,req.session.token);
     };
 };
