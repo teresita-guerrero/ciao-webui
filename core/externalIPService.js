@@ -13,7 +13,7 @@ externalIPService.prototype.listPools = function () {
     var adapter = this.adapter;
     var tokenManager = this.tokenManager;
     return function (req, res, next) {
-        var uri = "v2.1/pools";
+        var uri = "v1/pools";
         return adapter.onSuccess((data) => {
             res.set('Content-Type','application/json');
             res.send(data.json);
