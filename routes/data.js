@@ -45,11 +45,11 @@ router.delete('/:tenant/servers/:server', function (req, res, next) {
 
 /* Endpoints for External IP Service */
 // External IP Service GET Methods
-router.get('/pools', externalIPService.listPools());
+//router.get('/pools', externalIPService.listPools());
 router.get('/pools/:name')
 
 // External IP Service POST Methods
-router.get('/:tenant/pools/',externalIPService.createPool());
+router.post('/pools/',externalIPService.createPool());
 
 /* Endpoints for Image Service */
 // Image service GET Methods
