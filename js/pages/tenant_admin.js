@@ -10,7 +10,7 @@ var Logger = require('../util/logger.js');
 var CustomModal = require('../components/catalogue/customModal.js');
 // IMPORTANT: Remove
 // Added just for testing purposes
-var testingEndpoints = require('../components/testingEndpoints.js');
+var TestingEndpoints = require('../components/testingEndpoints.js');
 // ----------------------------------------------------------------------------
 var $ = require('jquery');
 
@@ -40,7 +40,7 @@ $('document').ready(function () {
     // Component to Pools
     datamanager.onDataSourceSet('testing-endpoints', function (sourceData) {
         ReactDOM.render(
-            <testingEndpoints sourceData={sourceData}/>,
+            <TestingEndpoints sourceData={sourceData}/>,
             document.getElementById("testing-endpoints"));
     });
 
