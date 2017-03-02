@@ -10,6 +10,10 @@ var AddInstances = require('../components/addInstances.js');
 var navbar = require('../components/navbar.js');
 var Logger = require('../util/logger.js');
 var CustomModal = require('../components/catalogue/customModal.js');
+// IMPORTANT: Remove
+// Added just for testing purposes
+var TestingEndpoints = require('../components/testingEndpoints.js');
+// ----------------------------------------------------------------------------
 var $ = require('jquery');
 
 $('document').ready(function () {
@@ -31,6 +35,15 @@ $('document').ready(function () {
     };
 
     var activeTenant = datamanager.data.activeTenant;
+
+    // IMPORTANT: Remove
+    // Adding just for testing purposes
+    // Component to Pools
+    datamanager.onDataSourceSet('testing-endpoints', function (sourceData) {
+        ReactDOM.render(React.createElement(TestingEndpoints, { sourceData: sourceData }), document.getElementById("testing-endpoints"));
+    });
+
+    // ------------------------------------------------------------------------
 
     // Component to Add instances
     datamanager.onDataSourceSet('add-instances', function (sourceData) {
@@ -395,7 +408,6 @@ $('document').ready(function () {
 
     // Ends block storage volume table
 
-
     // create group overview
     datamanager.onDataSourceSet('group-overview', function (sourceData) {
         var refresh = datamanager.data.REFRESH | 3000;
@@ -432,4 +444,32 @@ $('document').ready(function () {
     nprops.username = document.getElementById("main-top-navbar").getAttribute("attr-user");
     var n = React.createElement(navbar, nprops);
     ReactDOM.render(n, document.getElementById("main-top-navbar"));
+
+    // IMPORTANT: Remove
+    // Added just for testing purposes
+
+    // Starts Block storage volume table implementation
+    // reference name for volume table container
+    var volumeComponent = 'block-catalogue';
+    //create a volume function: executed when user clicks on Create btn/action
+    var createVolume = function (fields, containerNode) {
+        // get data from modal supplied fields and build form request body
+        var form = fields.reduce((prev, current) => {
+            var val = prev;
+            val[current.name] = document.getElementById(current.id).value;
+            return val;
+        }, {});
+        // post form to API service
+        $.post({ url: '/data/' + datamanager.data.activeTenant.id + '/volumes',
+            data: form
+        }).done(function (data) {
+            // close modal
+            document.getElementById(containerNode.id).remove();
+        }).fail(err => {
+            // close modal
+            document.getElementById(containerNode.id).remove();
+        });
+    };
+
+    // ------------------------------------------------------------------------
 });
