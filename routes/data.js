@@ -31,7 +31,11 @@ var imageService = new ImageService(adapter.useSetup({
                                     }),
                                     tokenManager);
 
-var externalIPService = new ExternalIPService(adapter.useNode('controller'),
+var externalIPService = new ExternalIPService(adapter.useSetup({
+                                        hostname:controllerAdapter.host,
+                                        port:"8889",
+                                        protocol:"https"
+                                    }),
                                     tokenManager);
 
 // Validate session as an authorized token is required
