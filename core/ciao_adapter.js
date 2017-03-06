@@ -62,7 +62,7 @@ ciaoAdapter.prototype.delete = function (path,token, next){
     }
     var req = this.http.request(options, response.callback);
     req.on('error', function (err) {
-        if (process.env.NODE_ENV != 'production')
+        if (process.env.NODE_ENV != 'production') // remove to see what happens
             console.log("ERROR: %s",err);
         if (next instanceof Function)
             next();
@@ -87,7 +87,7 @@ ciaoAdapter.prototype.get = function (path,token, next){
     }
     var req = this.http.request(options, response.callback);
     req.on('error', function (err) {
-        if (process.env.NODE_ENV != 'production')
+        if (process.env.NODE_ENV != 'production') // remove to test
             console.log("ERROR: %s",err);
         if (next instanceof Function)
             next();
@@ -193,6 +193,8 @@ ciaoAdapter.prototype.getServersDetail = function (tenant_id,token, next){
     }
     var req = this.http.request(options, response.callback);
     req.on('error', function (err) {
+
+        // asing a response code 
         if (process.env.NODE_ENV != 'production')
             console.log("ERROR: %s",err);
         if (this.errorCallback)

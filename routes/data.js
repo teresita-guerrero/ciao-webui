@@ -45,7 +45,7 @@ router.delete('/:tenant/servers/:server', function (req, res, next) {
 
 /* Endpoints for External IP Service */
 // External IP Service GET Methods
-//router.get('/pools', externalIPService.listPools());
+router.get('/pools', externalIPService.listPools());
 router.get('/pools/:name')
 
 // External IP Service POST Methods
