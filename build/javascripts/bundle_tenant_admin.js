@@ -2256,6 +2256,8 @@ var reactBootstrap = require('react-bootstrap');
 var Button = reactBootstrap.Button;
 var $ = require('jquery');
 
+console.log("si llega");
+
 var testingEndpoints = React.createClass({
     displayName: 'testingEndpoints',
 
@@ -2264,13 +2266,11 @@ var testingEndpoints = React.createClass({
 
     getInitialState: function () {
         return {
-            showTestingEndpoints: false,
             activeTenant: this.props.sourceData.activeTenant
         };
     },
 
     createPool: function (data) {
-
         var tenantId = datamanager.data.activeTenant.id;
         var body = {
             "name": "first pool",
@@ -2291,6 +2291,7 @@ var testingEndpoints = React.createClass({
     },
 
     render: function () {
+        console.log("mas lejos");
         return React.createElement(
             'div',
             { className: 'pull-right' },

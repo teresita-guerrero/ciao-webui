@@ -7,16 +7,15 @@ var externalIPService = function (adapter, tokenManager) {
     this.tokenManager = tokenManager;
 };
 
-// listMappedIPs
+// Retrieve a list of all public pools
 // Method: GET
 externalIPService.prototype.listPools = function () {
     var adapter = this.adapter;
     var tokenManager = this.tokenManager;
     return function (req, res, next) {
-        var uri = "/pools"; //assumption delete v2
+        var uri = "/pools";
         return adapter.onSuccess((data) => {
             res.set('Content-Type','application/json');
-            //console.log("los datos son", data.json);
             res.send(data.json);
         }).onError((data) => res.send(data))
             .get(uri,req.session.token);
@@ -31,7 +30,7 @@ externalIPService.prototype.createPool = function () {
     var tokenManager = this.tokenManager;
     return function (req, res, next) {
         console.log("hola", req.body);
-        var uri = "/v2/pools";
+        var uri = "/pools";
 
         var pool = req.body.pool? req.body :{
             name:req.body.name,

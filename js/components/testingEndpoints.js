@@ -4,6 +4,8 @@ var reactBootstrap = require('react-bootstrap');
 var Button = reactBootstrap.Button;
 var $ = require('jquery');
 
+console.log("si llega");
+
 var testingEndpoints = React.createClass({
 
     getDefaultProps: function() {
@@ -11,13 +13,11 @@ var testingEndpoints = React.createClass({
 
     getInitialState: function () {
         return {
-            showTestingEndpoints: false,
             activeTenant: this.props.sourceData.activeTenant
         };
     },
 
     createPool: function (data) {
-
         var tenantId = datamanager.data.activeTenant.id;
         var body = {
             "name": "first pool",
@@ -40,6 +40,7 @@ var testingEndpoints = React.createClass({
     },
 
     render: function () {
+        console.log("mas lejos");
         return (<div className="pull-right">
                 <h4>
                     <Button bsStyle={null} className="btn frm-btn-primary"
