@@ -77,7 +77,7 @@ externalIPService.prototype.addExternalIPsTOPool = function () {
         var uri = "/pools";
 
         var externalIPs = req.body.externalIPs? req.body :{
-            pool_id:req.body.pool_id,
+            id:req.body.id,
             Subnet: req.body.Subnet,
             ips: req.body.ips,
             ip: req.body.ip
