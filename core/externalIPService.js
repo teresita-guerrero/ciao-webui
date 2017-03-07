@@ -60,6 +60,7 @@ externalIPService.prototype.createPool = function () {
             ips: req.body.ips,
             ip: req.body.ip
         };
+        console.log("pool ", pool);
         return adapter.onSuccess((data) => res.send(data.json))
             .onError((data) => res.send(data))
             .post(uri,pool,req.session.token);
@@ -78,7 +79,7 @@ externalIPService.prototype.addExternalIPsTOPool = function () {
 
         var externalIPs = req.body.externalIPs? req.body :{
             pool_id:req.body.pool_id,
-            Subnet: req.body.Subnet,
+            Subnet: req.body.subnet,
             ips: req.body.ips,
             ip: req.body.ip
         };
