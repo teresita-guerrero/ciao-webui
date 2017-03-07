@@ -52,21 +52,21 @@ $('document').ready(function () {
     // IMPORTANT: Remove
     // Adding just for testing purposes
     // Component to Pools
-    datamanager.onDataSourceSet('testing-endpoints', function (sourceData) {
+    datamanager.onDataSourceSet('add-instances', function (sourceData) {
         ReactDOM.render(
             <TestingEndpoints sourceData={sourceData}/>,
-            document.getElementById("testing-endpoints"));
+            document.getElementById("add-instances"));
     });
 
 
     // ------------------------------------------------------------------------
 
     // Component to Add instances
-    datamanager.onDataSourceSet('add-instances', function (sourceData) {
+    /*datamanager.onDataSourceSet('add-instances', function (sourceData) {
         ReactDOM.render(
             <AddInstances sourceData={sourceData}/>,
             document.getElementById("add-instances"));
-    });
+    });*/
         //Usage summary
     datamanager.onDataSourceSet('usage-summary', function (sourceData) {
         sourceData.source = "/quotas";
