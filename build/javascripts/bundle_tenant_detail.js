@@ -2307,7 +2307,7 @@ var testingEndpoints = React.createClass({
     getAPool: function (data) {
         var pool_id = "bfa826d9-df6a-4b0d-a12c-2ba0c7d35e92";
         $.get({
-            url: "/data/pools" + pool_id
+            url: "/data/pools/" + pool_id
         }).done(function (success) {
             console.log('success', success);
         }).fail(function (err) {
