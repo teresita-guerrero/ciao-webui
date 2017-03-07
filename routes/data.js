@@ -61,7 +61,7 @@ router.get('/pools/:pool_id', externalIPService.listPoolByID()); //Does not work
 
 // External IP Service POST Methods
 router.post('/pools',externalIPService.createPool());
-router.post('/pools/:pool_id', externalIPService.addExternalIPsTOPool());
+router.post('/pools/:pool_id', externalIPService.addExternalIPsTOPool()); // waiting for endpoint confirmation
 
 // External IP Service DELETE Methods
 router.delete('/pools/:pool_id', externalIPService.deletePool());

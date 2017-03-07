@@ -28,8 +28,6 @@ externalIPService.prototype.listPoolByID = function () {
     var adapter = this.adapter;
     var tokenManager = this.tokenManager;
     return function (req, res, next) {
-        console.log("parameters ", req.params);
-        console.log("the id ", req.params.pool_id);
         var uri = "/pools";
         return adapter.onSuccess((data) => {
             if (data.json.pools) {
@@ -58,7 +56,7 @@ externalIPService.prototype.createPool = function () {
 
         var pool = req.body.pool? req.body :{
             name:req.body.name,
-            Subnet: req.body.subnet,
+            Subnet: req.body.Subnet,
             ips: req.body.ips,
             ip: req.body.ip
         };
