@@ -13,7 +13,7 @@ externalIPService.prototype.listPools = function () {
     var adapter = this.adapter;
     var tokenManager = this.tokenManager;
     return function (req, res, next) {
-        var uri = "/pools";
+        var uri = "/pools/"+req.params.pool_id;
         return adapter.onSuccess((data) => {
             res.set('Content-Type','application/json');
             res.send(data.json);
@@ -22,14 +22,26 @@ externalIPService.prototype.listPools = function () {
     };
 };
 
-// mapExternalIP
+// retrieve information about a pool
+// Method GET
+externalIPService.prototype.listPoolByID = function () {
+    var adapter = this.adapter;
+    var tokenManager = this.tokenManager;
+    return function (req, res, next) {
+        var uri = "/pools"+;
+        return adapter.onSuccess((data) => {
+            res.send(data.json);
+        }).onError((data) => res.send(data))
+            .get(url,req.session.token);
+    };
+}
+
 // Method: POST
-// Create a new external IP pool -- first approach
+// Create a new external IP pool
 externalIPService.prototype.createPool = function () {
     var adapter = this.adapter;
     var tokenManager = this.tokenManager;
     return function (req, res, next) {
-        console.log("hola", req.body);
         var uri = "/pools";
 
         var pool = req.body.pool? req.body :{
