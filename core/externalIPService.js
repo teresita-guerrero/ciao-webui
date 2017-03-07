@@ -68,12 +68,16 @@ externalIPService.prototype.createPool = function () {
     };
 };
 
-// unmapExternalIP
 // Method: DELETE
-externalIPService.prototype.unmapExternalIP = function () {
+// Remove a an empty pool
+externalIPService.prototype.deletePool = function () {
     var adapter = this.adapter;
     var tokenManager = this.tokenManager;
     return function (req, res, next) {
+        var uri = "/pools/"+req.params.pool_id;
+        return adapter.onSuccess((data) => res.send(data.json))
+            .onError((data) => res.send(data))
+            .delete(uri,req.session.token);
     };
 };
 

@@ -62,6 +62,9 @@ router.get('/pools/:pool_id', externalIPService.listPoolByID());
 // External IP Service POST Methods
 router.post('/pools',externalIPService.createPool());
 
+// External IP Service DELETE Methods
+router.delete('/pools/:pool_id', externalIPService.deletePool());
+
 /* Endpoints for Image Service */
 // Image service GET Methods
 router.get('/images', imageService.getImages());

@@ -43,6 +43,15 @@ var testingEndpoints = React.createClass({
             console.log('err', err);
         });
     },
+    deletePool: function (data) {
+        var pool_id = "e83eb9b7-26a1-4af1-bd69-4d24efdb347b";
+        $.ajax({
+            type: 'DELETE',
+            url: '/data/pools/' + pool_id
+        }).done(function (data) {
+            console.log(data);
+        });
+    }
 
     render: function () {
         console.log("mas lejos");
@@ -53,7 +62,16 @@ var testingEndpoints = React.createClass({
                         Create Pool
                     </Button>
                  </h4>
-                </div>);
+                </div>
+                <div className="pull-right">
+                <h4>
+                    <Button bsStyle={null} className="btn frm-btn-primary"
+                        onClick={this.deletePool}>
+                        Delete Pool
+                    </Button>
+                </h4>
+                </div>
+        );
     }
 });
 
