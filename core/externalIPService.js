@@ -68,6 +68,23 @@ externalIPService.prototype.createPool = function () {
     };
 };
 
+// Method: POST
+// Add external IPs to a Pool
+externalIPService.prototype.addExternalIPsTOPool = function () {
+    var adapter = this.adapter;
+    var tokenManager = this.tokenManager;
+    return function (req, res, next) {
+        var uri = "/pools";
+
+        var externalIPs = req.body.externalIPs? req.body :{
+            ips: req.body.ips
+        };
+        return adapter.onSuccess((data) => res.send(data.json))
+            .onError((data) => res.send(data))
+            .post(uri,externalIPs,req.session.token);
+    };
+};
+
 // Method: DELETE
 // Remove a an empty pool
 externalIPService.prototype.deletePool = function () {

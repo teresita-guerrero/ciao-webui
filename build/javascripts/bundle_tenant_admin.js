@@ -2262,22 +2262,28 @@ var testingEndpoints = React.createClass({
     displayName: 'testingEndpoints',
 
 
-    getDefaultProps: function () {},
+    getDefaultProps: function () {
+        return {
+            logger: null
+        };
+    },
 
     getInitialState: function () {
         return {
             activeTenant: this.props.sourceData.activeTenant
         };
+        console.log("Active tenant", activeTenant);
     },
 
     createPool: function (data) {
-        var tenantId = datamanager.data.activeTenant.id;
         var body = {
-            "name": "first pool",
-            "subnet": "",
-            "ips": [{}],
-            "ip": "192.168.0.1"
+            "name": "first pool veersion 2",
+            "Subnet": "",
+            "ips": [{ "ip": "192.168.0.3" }, { "ip": "192.168.0.4" }],
+            "ip": "192.168.0.5"
         };
+
+        console.log("The body is:", body);
 
         $.post({
             url: "/data/pools",
@@ -2285,6 +2291,39 @@ var testingEndpoints = React.createClass({
         }).done(function (success) {
             console.log('success', success);
             //datamanager.trigger('add-instances')
+        }).fail(function (err) {
+            console.log('err', err);
+        });
+    },
+    deletePool: function (data) {
+        var pool_id = "e83eb9b7-26a1-4af1-bd69-4d24efdb347b";
+        $.ajax({
+            type: 'DELETE',
+            url: '/data/pools/' + pool_id
+        }).done(function (data) {
+            console.log(data);
+        });
+    },
+    getAPool: function (data) {
+        var pool_id = "bfa826d9-df6a-4b0d-a12c-2ba0c7d35e92";
+        $.get({
+            url: "/data/pools/" + pool_id
+        }).done(function (success) {
+            console.log('success', success);
+        }).fail(function (err) {
+            console.log('err', err);
+        });
+    },
+    addExternalIPs: function (data) {
+        var pool_id = "bfa826d9-df6a-4b0d-a12c-2ba0c7d35e92";
+        var body = {
+            "ips": [{ "ip": "192.168.0.13" }, { "ip": "192.168.0.14" }]
+        };
+        $.post({
+            url: "/data/pools/" + pool_id,
+            data: body
+        }).done(function (success) {
+            console.log('success', success);
         }).fail(function (err) {
             console.log('err', err);
         });
@@ -2303,13 +2342,28 @@ var testingEndpoints = React.createClass({
                     { bsStyle: null, className: 'btn frm-btn-primary',
                         onClick: this.createPool },
                     'Create Pool'
+                ),
+                React.createElement(
+                    Button,
+                    { bsStyle: null, className: 'btn frm-btn-primary',
+                        onClick: this.deletePool },
+                    'Delete Pool'
+                ),
+                React.createElement(
+                    Button,
+                    { bsStyle: null, className: 'btn frm-btn-primary',
+                        onClick: this.getAPool },
+                    'Get a Pool'
+                ),
+                React.createElement(
+                    Button,
+                    { bsStyle: null, className: 'btn frm-btn-primary',
+                        onClick: this.addExternalIPs },
+                    'Add External IPs'
                 )
-            ),
-            this.createPool()
+            )
         );
-    },
-    componentDidMount: function () {},
-    componentWillUnmount: function () {}
+    }
 });
 
 module.exports = testingEndpoints;

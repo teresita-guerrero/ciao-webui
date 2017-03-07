@@ -2314,6 +2314,20 @@ var testingEndpoints = React.createClass({
             console.log('err', err);
         });
     },
+    addExternalIPs: function (data) {
+        var pool_id = "bfa826d9-df6a-4b0d-a12c-2ba0c7d35e92";
+        var body = {
+            "ips": [{ "ip": "192.168.0.13" }, { "ip": "192.168.0.14" }]
+        };
+        $.post({
+            url: "/data/pools/" + pool_id,
+            data: body
+        }).done(function (success) {
+            console.log('success', success);
+        }).fail(function (err) {
+            console.log('err', err);
+        });
+    },
 
     render: function () {
         console.log("mas lejos");
@@ -2340,6 +2354,12 @@ var testingEndpoints = React.createClass({
                     { bsStyle: null, className: 'btn frm-btn-primary',
                         onClick: this.getAPool },
                     'Get a Pool'
+                ),
+                React.createElement(
+                    Button,
+                    { bsStyle: null, className: 'btn frm-btn-primary',
+                        onClick: this.addExternalIPs },
+                    'Add External IPs'
                 )
             )
         );
