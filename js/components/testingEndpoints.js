@@ -45,7 +45,7 @@ var testingEndpoints = React.createClass({
     render: function () {
         console.log("mas lejos");
         return (<div className="pull-right">
-                <h4> hola
+                <h4>
                     <Button bsStyle={null} className="btn frm-btn-primary"
                         onClick={this.createPool}>
                         Create Pool

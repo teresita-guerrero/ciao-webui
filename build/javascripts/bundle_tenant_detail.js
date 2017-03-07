@@ -2302,7 +2302,6 @@ var testingEndpoints = React.createClass({
             React.createElement(
                 'h4',
                 null,
-                ' hola',
                 React.createElement(
                     Button,
                     { bsStyle: null, className: 'btn frm-btn-primary',
@@ -2601,8 +2600,8 @@ $('document').ready(function () {
     // IMPORTANT: Remove
     // Adding just for testing purposes
     // Component to Pools
-    datamanager.onDataSourceSet('testing-endpoints', function (sourceData) {
-        ReactDOM.render(React.createElement(TestingEndpoints, { sourceData: sourceData }), document.getElementById("testing-endpoints"));
+    datamanager.onDataSourceSet('add-instances', function (sourceData) {
+        ReactDOM.render(React.createElement(TestingEndpoints, { sourceData: sourceData }), document.getElementById("add-instances"));
     });
 
     // ------------------------------------------------------------------------
