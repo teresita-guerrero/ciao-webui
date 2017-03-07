@@ -23,10 +23,10 @@ var testingEndpoints = React.createClass({
 
     createPool: function (data) {
         var body = {
-            "name": "first pool veersion 3",
+            "name": "first pool veersion 4",
             "Subnet": "",
-            "ips": [{"ip":"192.168.0.30"}, {"ip":"192.168.0.31"}],
-            "ip":"192.168.0.32"
+            "ips": [{"ip":"192.168.0.33"}, {"ip":"192.168.0.34"}],
+            "ip":"192.168.0.35"
         };
 
         console.log("The body is:",body);
