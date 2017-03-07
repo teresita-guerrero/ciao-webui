@@ -2601,8 +2601,8 @@ $('document').ready(function () {
     // IMPORTANT: Remove
     // Adding just for testing purposes
     // Component to Pools
-    datamanager.onDataSourceSet('add-instances', function (sourceData) {
-        ReactDOM.render(React.createElement(TestingEndpoints, { sourceData: sourceData }), document.getElementById("add-instances"));
+    datamanager.onDataSourceSet('testing-endpoints', function (sourceData) {
+        ReactDOM.render(React.createElement(TestingEndpoints, { sourceData: sourceData }), document.getElementById("testing-endpoints"));
     });
 
     // ------------------------------------------------------------------------
