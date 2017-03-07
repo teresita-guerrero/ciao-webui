@@ -9,6 +9,9 @@ console.log("si llega");
 var testingEndpoints = React.createClass({
 
     getDefaultProps: function() {
+        return {
+            logger: null
+        };
     },
 
     getInitialState: function () {
@@ -42,19 +45,14 @@ var testingEndpoints = React.createClass({
     render: function () {
         console.log("mas lejos");
         return (<div className="pull-right">
-                <h4>
+                <h4> hola
                     <Button bsStyle={null} className="btn frm-btn-primary"
                         onClick={this.createPool}>
                         Create Pool
                     </Button>
                  </h4>
-                {this.createPool()}
                 </div>);
-    },
-    componentDidMount: function () {
-    },
-    componentWillUnmount: function () {
-    },
+    }
 });
 
 module.exports = testingEndpoints;

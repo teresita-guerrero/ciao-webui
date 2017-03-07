@@ -2262,7 +2262,11 @@ var testingEndpoints = React.createClass({
     displayName: 'testingEndpoints',
 
 
-    getDefaultProps: function () {},
+    getDefaultProps: function () {
+        return {
+            logger: null
+        };
+    },
 
     getInitialState: function () {
         return {
@@ -2298,18 +2302,16 @@ var testingEndpoints = React.createClass({
             React.createElement(
                 'h4',
                 null,
+                ' hola',
                 React.createElement(
                     Button,
                     { bsStyle: null, className: 'btn frm-btn-primary',
                         onClick: this.createPool },
                     'Create Pool'
                 )
-            ),
-            this.createPool()
+            )
         );
-    },
-    componentDidMount: function () {},
-    componentWillUnmount: function () {}
+    }
 });
 
 module.exports = testingEndpoints;
