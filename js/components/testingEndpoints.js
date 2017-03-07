@@ -51,7 +51,7 @@ var testingEndpoints = React.createClass({
         }).done(function (data) {
             console.log(data);
         });
-    }
+    },
 
     render: function () {
         console.log("mas lejos");
@@ -61,15 +61,11 @@ var testingEndpoints = React.createClass({
                         onClick={this.createPool}>
                         Create Pool
                     </Button>
-                 </h4>
-                </div>
-                <div className="pull-right">
-                <h4>
                     <Button bsStyle={null} className="btn frm-btn-primary"
                         onClick={this.deletePool}>
                         Delete Pool
                     </Button>
-                </h4>
+                 </h4>
                 </div>
         );
     }
