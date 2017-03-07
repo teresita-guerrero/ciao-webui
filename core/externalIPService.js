@@ -28,6 +28,8 @@ externalIPService.prototype.listPoolByID = function () {
     var adapter = this.adapter;
     var tokenManager = this.tokenManager;
     return function (req, res, next) {
+        console.log("parameters ", req.params);
+        console.log("the id ", req.params.pool_id);
         var uri = "/pools/"+req.params.pool_id;
         return adapter.onSuccess((data) => {
             res.send(data.json);
