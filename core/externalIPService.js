@@ -59,7 +59,7 @@ externalIPService.prototype.createPool = function () {
 
         var pool = req.body.pool? req.body :{
             name:req.body.name,
-            subnet: req.body.subnet,
+            Subnet: req.body.Subnet,
             ips: [{"ip":"192.168.0.36"}, {"ip":"192.168.0.37"}],
             ip: req.body.ip
         };
