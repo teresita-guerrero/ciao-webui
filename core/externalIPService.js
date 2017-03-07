@@ -7,6 +7,8 @@ var externalIPService = function (adapter, tokenManager) {
     this.tokenManager = tokenManager;
 };
 
+//POOLS
+
 // Retrieve a list of all public pools
 // Method: GET
 externalIPService.prototype.listPools = function () {
@@ -57,7 +59,7 @@ externalIPService.prototype.createPool = function () {
         var pool = req.body.pool? req.body :{
             name:req.body.name,
             Subnet: req.body.Subnet,
-            ips: [{"ip":"192.168.0.33"}, {"ip":"192.168.0.34"}],
+            ips: req.body.ips,
             ip: req.body.ip
         };
         console.log("pool ", pool);
@@ -101,5 +103,24 @@ externalIPService.prototype.deletePool = function () {
             .delete(uri,req.session.token);
     };
 };
+
+// EXTERNAL IPs
+
+// List all external IPs that are currently mapped across ciao
+// Method: GET
+externalIPService.prototype.listExternalIPs = function () {
+    var adapter = this.adapter;
+    var tokenManager = this.tokenManager;
+    return function (req, res, next) {
+        var uri = "/external-ips";
+        return adapter.onSuccess((data) => {
+            res.set('Content-Type','application/json');
+            res.send(data.json);
+        }).onError((data) => res.send(data))
+            .get(uri,req.session.token);
+    };
+};
+
+
 
 module.exports = externalIPService;

@@ -54,16 +54,20 @@ router.delete('/:tenant/servers/:server', function (req, res, next) {
         .validate(req, res);
 });
 
-/* Endpoints for External IP Service */
+/* Endpoints for External IPs */
 // External IP Service GET Methods
+router.get('/external-ips', externalIPService.listExternalIPs());
+
+/* Endpoints for Pools Service */
+// Pool Service GET Methods
 router.get('/pools', externalIPService.listPools());
 router.get('/pools/:pool_id', externalIPService.listPoolByID()); //Does not work
 
-// External IP Service POST Methods
+// Pool Service POST Methods
 router.post('/pools',externalIPService.createPool());
 router.post('/pools/:pool_id', externalIPService.addExternalIPsTOPool()); // waiting for endpoint confirmation
 
-// External IP Service DELETE Methods
+// Pool Service DELETE Methods
 router.delete('/pools/:pool_id', externalIPService.deletePool());
 
 /* Endpoints for Image Service */
