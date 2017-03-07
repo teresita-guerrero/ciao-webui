@@ -32,6 +32,7 @@ externalIPService.prototype.listPoolByID = function () {
     return function (req, res, next) {
         var uri = "/pools";
         return adapter.onSuccess((data) => {
+            res.set('Content-Type','application/json');
             if (data.json.pools) {
                 var pools = data.json.pools.filter(
                     (pool) => pool.id == req.params.pool_id);
@@ -59,7 +60,7 @@ externalIPService.prototype.createPool = function () {
         var pool = req.body.pool? req.body :{
             name:req.body.name,
             Subnet: req.body.Subnet,
-            ips: req.body.ips,
+            ips: [],
             ip: req.body.ip
         };
         console.log("pool ", pool);
