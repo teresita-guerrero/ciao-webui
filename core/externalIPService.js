@@ -30,9 +30,19 @@ externalIPService.prototype.listPoolByID = function () {
     return function (req, res, next) {
         console.log("parameters ", req.params);
         console.log("the id ", req.params.pool_id);
-        var uri = "/pools/"+req.params.pool_id;
+        var uri = "/pools";
         return adapter.onSuccess((data) => {
-            res.send(data.json);
+            if (data.json.pools) {
+                var pools = data.json.pools.filter(
+                    (pool) => pool.id == req.params.pool_id);
+                if (pools.length > 0) {
+                    res.send(pools.pop());
+                } else {
+                    res.send([]);
+                }
+            } else {
+                res.send([]);
+            }
         }).onError((data) => res.send(data))
             .get(url,req.session.token);
     };
