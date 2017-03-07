@@ -2317,7 +2317,7 @@ var testingEndpoints = React.createClass({
     addExternalIPs: function (data) {
         var pool_id = "bfa826d9-df6a-4b0d-a12c-2ba0c7d35e92";
         var body = {
-            "id": pool_id,
+            "pool_id": pool_id,
             "Subnet": "",
             "ips": [{ "ip": "192.168.0.23" }, { "ip": "192.168.0.24" }],
             "ip": "192.168.0.25"

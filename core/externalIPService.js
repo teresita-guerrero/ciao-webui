@@ -74,10 +74,12 @@ externalIPService.prototype.addExternalIPsTOPool = function () {
     var adapter = this.adapter;
     var tokenManager = this.tokenManager;
     return function (req, res, next) {
-        var uri = "/pools/"+req.params.pool_id;;
+        var uri = "/pools/"+req.params.pool_id;
+
+        console.log("url", uri);
 
         var externalIPs = req.body.externalIPs? req.body :{
-            id:req.body.id,
+            pool_id:req.body.pool_id,
             Subnet: req.body.Subnet,
             ips: req.body.ips,
             ip: req.body.ip
