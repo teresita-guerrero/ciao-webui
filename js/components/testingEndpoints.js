@@ -18,10 +18,10 @@ var testingEndpoints = React.createClass({
         return {
             activeTenant: this.props.sourceData.activeTenant
         };
+        console.log("Active tenant", activeTenant);
     },
 
     createPool: function (data) {
-        var tenantId = datamanager.data.activeTenant.id;
         var body = {
             "name": "first pool",
             "subnet": "",
