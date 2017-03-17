@@ -2276,11 +2276,12 @@ var testingEndpoints = React.createClass({
     },
 
     createPool: function (data) {
+        var ips = [{ "ip": "192.168.0.50" }, { "ip": "192.168.0.51" }];
         var body = {
-            "name": "first pool veersion 4",
+            "name": "first pool veersion cincuentas",
             "Subnet": "192.168.0.0/24",
-            "ips": [{ "ip": "192.168.0.36" }, { "ip": "192.168.0.37" }],
-            "ip": "192.168.0.38"
+            "ips": JSON.stringify(ips),
+            "ip": "192.168.0.52"
         };
 
         console.log("The body is:", body);
