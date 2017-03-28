@@ -103,6 +103,22 @@ externalIPService.prototype.deletePool = function () {
     };
 };
 
+// Retrieve a list of all subnets in a pool
+// Method: GET
+externalIPService.prototype.listSubnetsByPool = function () {
+    var adapter = this.adapter;
+    var tokenManager = this.tokenManager;
+    return function (req, res, next) {
+        var uri = "/pools/"+req.params.pool_id+"/subnets";
+        return adapter.onSuccess((data) => {
+            res.set('Content-Type','application/json');
+            res.send(data.json);
+        }).onError((data) => res.send(data))
+            .get(uri,req.session.token);
+    };
+};
+
+
 // EXTERNAL IPs
 
 // List all external IPs that are currently mapped across ciao
