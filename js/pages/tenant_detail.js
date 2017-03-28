@@ -8,6 +8,10 @@ var GroupOverview = require('../components/groupOverview.js');
 var UsageSummary = require('../components/usageSummary.js');
 var AddInstances = require('../components/addInstances.js');
 var Logger = require('../util/logger.js');
+// IMPORTANT: Remove
+// Added just for testing purposes
+var TestingEndpoints = require('../components/testingEndpoints.js');
+// ----------------------------------------------------------------------------
 var $ = require('jquery');
 
 $('document').ready(function () {
@@ -45,12 +49,24 @@ $('document').ready(function () {
 
     var activeTenant = datamanager.data.activeTenant;
 
-    // Component to Add instances
+    // IMPORTANT: Remove
+    // Adding just for testing purposes
+    // Component to Pools
     datamanager.onDataSourceSet('add-instances', function (sourceData) {
+        ReactDOM.render(
+            <TestingEndpoints sourceData={sourceData}/>,
+            document.getElementById("add-instances"));
+    });
+
+
+    // ------------------------------------------------------------------------
+
+    // Component to Add instances
+    /*datamanager.onDataSourceSet('add-instances', function (sourceData) {
         ReactDOM.render(
             <AddInstances sourceData={sourceData}/>,
             document.getElementById("add-instances"));
-    });
+    });*/
         //Usage summary
     datamanager.onDataSourceSet('usage-summary', function (sourceData) {
         sourceData.source = "/quotas";
@@ -228,7 +244,7 @@ $('document').ready(function () {
                     imageList = window.datamanager.data
                         .images.map(
                             (img)=>{
-                                return <option  
+                                return <option
                                     value={img.id}>
                                 {img.name}
                                 </option>;
