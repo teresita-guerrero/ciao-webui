@@ -2332,15 +2332,15 @@ var testingEndpoints = React.createClass({
             console.log('err', err);
         });
     },
-    getSubnetById: function (data) {
+    deleteSubnetById: function (data) {
         var pool_id = "aa42f648-3caf-4aae-97f9-77899ac34809";
         var subnet_id = "d921dde3-4e5c-4084-bcc3-7f1f846b9623";
-        $.get({
-            url: "/data/pools/" + pool_id + "/subnets/" + subnet_id
-        }).done(function (success) {
-            console.log('success', success);
-        }).fail(function (err) {
-            console.log('err', err);
+
+        $.ajax({
+            type: 'DELETE',
+            url: '/data/pools/' + pool_id + '/subnets/' + subnet_id
+        }).done(function (data) {
+            console.log(data);
         });
     },
 
@@ -2378,8 +2378,8 @@ var testingEndpoints = React.createClass({
                 React.createElement(
                     Button,
                     { bsStyle: null, className: 'btn frm-btn-primary',
-                        onClick: this.getSubnetById },
-                    'Get Subnet'
+                        onClick: this.deleteSubnetById },
+                    'Delete a Subnet'
                 )
             )
         );

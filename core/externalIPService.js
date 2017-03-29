@@ -103,19 +103,18 @@ externalIPService.prototype.deletePool = function () {
     };
 };
 
-// Retrieve a subnet in a pool
-// Method: GET
-externalIPService.prototype.listSubnetById = function () {
+// Delete a subnet in a pool
+// Method: DELETE
+externalIPService.prototype.deleteSubnetById = function () {
     var adapter = this.adapter;
     var tokenManager = this.tokenManager;
     return function (req, res, next) {
         var uri = "/pools/"+req.params.pool_id+"/subnets/"+
                     req.params.subnet_id;
         return adapter.onSuccess((data) => {
-            res.set('Content-Type','application/json');
             res.send(data.json);
         }).onError((data) => res.send(data))
-            .get(uri,req.session.token);
+            .delete(uri,req.session.token);
     };
 };
 

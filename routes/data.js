@@ -62,8 +62,6 @@ router.get('/external-ips', externalIPService.listExternalIPs());
 // Pool Service GET Methods
 router.get('/pools', externalIPService.listPools());
 router.get('/pools/:pool_id', externalIPService.listPoolByID()); //Does not work
-router.get('/pools/:pool_id/subnets/:subnet_id', externalIPService.
-            listSubnetById());
 
 // Pool Service POST Methods
 router.post('/pools',externalIPService.createPool());
@@ -71,6 +69,8 @@ router.post('/pools/:pool_id', externalIPService.addExternalIPsTOPool());
 
 // Pool Service DELETE Methods
 router.delete('/pools/:pool_id', externalIPService.deletePool());
+router.delete('/pools/:pool_id/subnets/:subnet_id', externalIPService.
+            deleteSubnetById());
 
 /* Endpoints for Image Service */
 // Image service GET Methods
