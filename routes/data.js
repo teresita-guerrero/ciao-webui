@@ -62,7 +62,8 @@ router.get('/external-ips', externalIPService.listExternalIPs());
 // Pool Service GET Methods
 router.get('/pools', externalIPService.listPools());
 router.get('/pools/:pool_id', externalIPService.listPoolByID()); //Does not work
-router.get('/pools/:pool_id/subnets', externalIPService.listSubnetsByPool());
+router.get('/pools/:pool_id/subnets/:subnet_id', externalIPService.
+            listSubnetById());
 
 // Pool Service POST Methods
 router.post('/pools',externalIPService.createPool());

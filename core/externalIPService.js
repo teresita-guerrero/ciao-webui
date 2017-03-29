@@ -103,13 +103,14 @@ externalIPService.prototype.deletePool = function () {
     };
 };
 
-// Retrieve a list of all subnets in a pool
+// Retrieve a subnet in a pool
 // Method: GET
-externalIPService.prototype.listSubnetsByPool = function () {
+externalIPService.prototype.listSubnetById = function () {
     var adapter = this.adapter;
     var tokenManager = this.tokenManager;
     return function (req, res, next) {
-        var uri = "/pools/"+req.params.pool_id+"/subnets";
+        var uri = "/pools/"+req.params.pool_id+"/subnets/"+
+                    req.params.subnet_id;
         return adapter.onSuccess((data) => {
             res.set('Content-Type','application/json');
             res.send(data.json);
