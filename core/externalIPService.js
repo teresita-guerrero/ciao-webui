@@ -80,10 +80,11 @@ externalIPService.prototype.addExternalIPsTOPool = function () {
 
         var externalIPs = req.body.externalIPs? req.body :{
             pool_id:req.body.pool_id,
-            Subnet: req.body.subnet,
-            ips: req.body.ips,
+            Subnet: req.body.Subnet,
+            ips: JSON.parse(req.body.ips),
             ip: req.body.ip
         };
+        console.log(externalIPs);
         return adapter.onSuccess((data) => res.send(data.json))
             .onError((data) => res.send(data))
             .post(uri,externalIPs,req.session.token);

@@ -66,12 +66,12 @@ var testingEndpoints = React.createClass({
         });
     },
     addExternalIPs: function (data) {
-        var pool_id = "bfa826d9-df6a-4b0d-a12c-2ba0c7d35e92";
+        var pool_id = "7849ddbc-a4b4-4c73-8bc4-b8be528e5c12";
         var body = {
             "pool_id": pool_id,
             "Subnet":"",
-            "ips": [{"ip":"192.168.0.23"}, {"ip":"192.168.0.24"}],
-            "ip": "192.168.0.25"
+            "ips": [{"ip":"192.168.7.23"}, {"ip":"192.168.7.24"}],
+            "ip": ""
         };
         $.post({
             url:"/data/pools/"+pool_id,
@@ -107,7 +107,7 @@ var testingEndpoints = React.createClass({
         });
     },
     deleteMappedIp: function (data) {
-        var ip_id = "d921dde3-4e5c-4084-bcc3-7f1f846b9623";
+        var mapped_id = "d921dde3-4e5c-4084-bcc3-7f1f846b9623";
 
         $.ajax({
             type: 'DELETE',
