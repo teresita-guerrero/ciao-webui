@@ -2316,11 +2316,12 @@ var testingEndpoints = React.createClass({
         });
     },
     addExternalIPs: function (data) {
+        var ips = [{ "ip": "192.168.7.23" }, { "ip": "192.168.7.24" }];
         var pool_id = "7849ddbc-a4b4-4c73-8bc4-b8be528e5c12";
         var body = {
             "pool_id": pool_id,
             "Subnet": "",
-            "ips": [{ "ip": "192.168.7.23" }, { "ip": "192.168.7.24" }],
+            "ips": JSON.stringify(ips),
             "ip": ""
         };
         $.post({

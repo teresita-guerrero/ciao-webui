@@ -56,7 +56,8 @@ externalIPService.prototype.createPool = function () {
     var tokenManager = this.tokenManager;
     return function (req, res, next) {
         var uri = "/pools";
-
+        // The body may be modified before being sent
+        // it depends of the parameters received
         var pool = req.body.pool? req.body :{
             name:req.body.name,
             Subnet: req.body.Subnet,
@@ -77,7 +78,8 @@ externalIPService.prototype.addExternalIPsTOPool = function () {
     var tokenManager = this.tokenManager;
     return function (req, res, next) {
         var uri = "/pools/"+req.params.pool_id;
-
+        // The body may be modified before being sent
+        // it depends of the parameters received
         var externalIPs = req.body.externalIPs? req.body :{
             pool_id:req.body.pool_id,
             Subnet: req.body.Subnet,
