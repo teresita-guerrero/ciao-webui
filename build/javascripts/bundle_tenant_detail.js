@@ -2343,6 +2343,27 @@ var testingEndpoints = React.createClass({
             console.log(data);
         });
     },
+    deleteIpFromPool: function (data) {
+        var pool_id = "7849ddbc-a4b4-4c73-8bc4-b8be528e5c12";
+        var ip_id = "d921dde3-4e5c-4084-bcc3-7f1f846b9623";
+
+        $.ajax({
+            type: 'DELETE',
+            url: '/data/pools/' + pool_id + '/external-ips/' + ip_id
+        }).done(function (data) {
+            console.log(data);
+        });
+    },
+    deleteMappedIp: function (data) {
+        var ip_id = "d921dde3-4e5c-4084-bcc3-7f1f846b9623";
+
+        $.ajax({
+            type: 'DELETE',
+            url: '/data/external-ips/' + mapped_id
+        }).done(function (data) {
+            console.log(data);
+        });
+    },
 
     render: function () {
         return React.createElement(
@@ -2380,6 +2401,18 @@ var testingEndpoints = React.createClass({
                     { bsStyle: null, className: 'btn frm-btn-primary',
                         onClick: this.deleteSubnetById },
                     'Delete a Subnet'
+                ),
+                React.createElement(
+                    Button,
+                    { bsStyle: null, className: 'btn frm-btn-primary',
+                        onClick: this.deleteIpFromPool },
+                    'Delete IpFromPool'
+                ),
+                React.createElement(
+                    Button,
+                    { bsStyle: null, className: 'btn frm-btn-primary',
+                        onClick: this.deleteMappedIp },
+                    'Delete MappedIp'
                 )
             )
         );

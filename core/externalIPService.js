@@ -118,6 +118,34 @@ externalIPService.prototype.deleteSubnetById = function () {
     };
 };
 
+// Delete a ip from a pool
+// Method: DELETE
+externalIPService.prototype.deleteIpFromPool = function () {
+    var adapter = this.adapter;
+    var tokenManager = this.tokenManager;
+    return function (req, res, next) {
+        var uri = "/pools/"+req.params.pool_id+"/external-ips/"+
+                    req.params.ip_id;
+        return adapter.onSuccess((data) => {
+            res.send(data.json);
+        }).onError((data) => res.send(data))
+            .delete(uri,req.session.token);
+    };
+};
+
+// Unmap a mapped ip address across Ciao
+// Method: DELETE
+externalIPService.prototype.deleteMappedIp = function () {
+    var adapter = this.adapter;
+    var tokenManager = this.tokenManager;
+    return function (req, res, next) {
+        var uri = "/external-ips/"+req.params.mapped_id;
+        return adapter.onSuccess((data) => {
+            res.send(data.json);
+        }).onError((data) => res.send(data))
+            .delete(uri,req.session.token);
+    };
+};
 
 // EXTERNAL IPs
 

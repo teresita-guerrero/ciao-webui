@@ -71,6 +71,9 @@ router.post('/pools/:pool_id', externalIPService.addExternalIPsTOPool());
 router.delete('/pools/:pool_id', externalIPService.deletePool());
 router.delete('/pools/:pool_id/subnets/:subnet_id', externalIPService.
             deleteSubnetById());
+router.delete('/pools/:pool_id/external-ips/:ip_id', externalIPService.
+            deleteIpFromPool());
+router.delete('/external-ips/:mapping_id', externalIPService.deleteMappedIp());
 
 /* Endpoints for Image Service */
 // Image service GET Methods
